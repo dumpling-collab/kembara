@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Design tokens diambil dari Figma "kembara" */
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --color-navy: #183178;      /* heading / primary */
+    --color-brand: #ff8400;     /* CTA oranye */
+    --color-brand-dark: #e67600;
+    --color-sky-soft: #f0f9ff;  /* background section */
+    --color-ink-muted: #576065; /* teks sekunder */
+    --color-mint: #10b981;      /* badge stamp / points */
+    --color-sand: #efedf4;      /* chip rating */
+    --color-surface: #faf8ff;   /* navbar / kartu */
+
+    --radius-card: 40px;
+    --shadow-soft: 0 20px 40px rgba(24, 49, 120, 0.08);
+}
+
+@layer base {
+    body { @apply bg-sky-soft font-sans text-navy antialiased; }
+}
+
+@layer components {
+    .glass-card {
+        @apply overflow-hidden rounded-card border border-white/40 bg-white/70 shadow-soft backdrop-blur-lg;
+    }
+    .btn-brand {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-bold text-white transition hover:bg-brand-dark;
+    }
+    .btn-navy {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 font-bold text-white transition hover:opacity-90;
+    }
+    .chip {
+        @apply rounded-full bg-white px-5 py-2 text-sm font-bold text-navy shadow-soft transition;
+    }
+    .chip-active { @apply bg-navy text-white; }
+    .field {
+        @apply w-full rounded-lg border border-slate-300 bg-white/80 px-4 py-3 text-navy placeholder:text-slate-400 focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/20;
+    }
+    .dot-pattern {
+        background-image: radial-gradient(rgba(24,49,120,.12) 1px, transparent 1px);
+        background-size: 24px 24px;
+    }
+}
